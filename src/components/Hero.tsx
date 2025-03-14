@@ -8,7 +8,7 @@ export function Hero() {
         <div className="text-center mt-16 max-w-3xl">
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl lg:text-3xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-black to-gray-600/50">
-              Hi, I'm
+              Hi, I&apos;m
             </p>
             <h1 className="text-5xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-b from-black to-gray-600/50">
               Shekhar Suman

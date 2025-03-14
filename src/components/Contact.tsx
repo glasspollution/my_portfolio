@@ -9,7 +9,7 @@ import { SiGithub, SiLinkedin, SiX, SiKaggle } from "react-icons/si";
 interface BlockProps {
   className?: string;
   children: React.ReactNode;
-  whileHover?: any;
+  whileHover?: { scale?: number };
 }
 
 const Block: React.FC<BlockProps> = ({ className, children, whileHover, ...rest }) => {
@@ -62,9 +62,9 @@ export function Contact() {
             {/* Header Block */}
             <Block className="col-span-12 row-span-2 md:col-span-6">
               <h3 className="mb-8 text-2xl font-light leading-tight text-gray-800">
-                Let's collaborate on something amazing.{" "}
+                Let&apos;s collaborate on something amazing.{" "}
                 <span className="text-gray-500">
-                  I'm always open to discussing new projects and opportunities.
+                  I&apos;m always open to discussing new projects and opportunities.
                 </span>
               </h3>
               <a

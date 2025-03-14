@@ -33,7 +33,7 @@ export function AboutMe() {
                 My expertise spans across Computer Vision, Natural Language Processing, and Reinforcement Learning, with a strong foundation in both theoretical concepts and practical applications.
               </p>
               <p className="text-base text-gray-600">
-                I'm passionate about staying at the forefront of technological advancements and contributing to the AI community through open-source projects and research publications.
+                I&apos;m passionate about staying at the forefront of technological advancements and contributing to the AI community through open-source projects and research publications.
               </p>
             </div>
           </div>
