@@ -43,8 +43,8 @@ export function Globe({
   className?: string;
   config?: COBEOptions;
 }) {
-  let phi = useRef(0);
-  let width = useRef(0);
+  const phi = useRef(0);
+  const width = useRef(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);

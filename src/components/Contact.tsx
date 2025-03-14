@@ -50,7 +50,7 @@ export function Contact() {
       <section className="py-20 bg-white" id="contact">
         <div className="container mx-auto px-6">
           <h2 className="text-5xl font-light mb-12 bg-clip-text text-transparent bg-gradient-to-b from-black to-gray-600/50 text-center">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           
           <motion.div
