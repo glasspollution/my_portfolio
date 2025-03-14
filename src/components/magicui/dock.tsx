@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  HTMLMotionProps,
 } from "framer-motion";
 import React, { useRef } from "react";
 
@@ -29,13 +30,11 @@ const dockVariants = cva(
   "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
 );
 
-export interface DockIconProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DockIconProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   size?: number;
   magnification?: number;
   distance?: number;
   mouseX?: MotionValue<number>;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 const DockIcon = React.forwardRef<HTMLDivElement, DockIconProps>(
@@ -64,7 +63,6 @@ const DockIcon = React.forwardRef<HTMLDivElement, DockIconProps>(
     return (
       <motion.div
         ref={(node) => {
-          // Handle both refs
           elementRef.current = node;
           if (typeof forwardedRef === 'function') {
             forwardedRef(node);
@@ -75,7 +73,7 @@ const DockIcon = React.forwardRef<HTMLDivElement, DockIconProps>(
         style={{ width: scaleSize, height: scaleSize, padding }}
         className={cn(
           "flex aspect-square cursor-pointer items-center justify-center rounded-full",
-          className,
+          className
         )}
         {...props}
       >
@@ -110,7 +108,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             size: iconSize,
             magnification: iconMagnification,
             distance: iconDistance,
-          });
+          } as DockIconProps);
         }
         return child;
       });
