@@ -3,13 +3,12 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   motion,
-  MotionProps,
   MotionValue,
   useMotionValue,
   useSpring,
   useTransform,
 } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -40,7 +39,7 @@ export interface DockIconProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DockIcon = React.forwardRef<HTMLDivElement, DockIconProps>(
-  ({ size = DEFAULT_SIZE, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, mouseX, className, children, ...props }, ref) => {
+  ({ size = DEFAULT_SIZE, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE, mouseX, className, children, ...props }, forwardedRef) => {
     const elementRef = useRef<HTMLDivElement>(null);
     const padding = Math.max(6, size * 0.2);
     const defaultMouseX = useMotionValue(Infinity);
@@ -64,7 +63,15 @@ const DockIcon = React.forwardRef<HTMLDivElement, DockIconProps>(
 
     return (
       <motion.div
-        ref={elementRef}
+        ref={(node) => {
+          // Handle both refs
+          elementRef.current = node;
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(node);
+          } else if (forwardedRef) {
+            forwardedRef.current = node;
+          }
+        }}
         style={{ width: scaleSize, height: scaleSize, padding }}
         className={cn(
           "flex aspect-square cursor-pointer items-center justify-center rounded-full",
